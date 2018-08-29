@@ -6,8 +6,8 @@ import tempfile
 import subprocess
 import IPython.core.magic as ipym
 
-compiler = '/usr/local/cuda/bin/nvcc'
-ext = '.cu'
+compiler = '/usr/bin/gcc'
+ext = '.c'
 
 
 def get_argparser():
@@ -38,7 +38,7 @@ class NVCCPlugin(ipym.Magics):
         return output
 
     @ipym.cell_magic
-    def cu(self, line, cell):
+    def c(self, line, cell):
         try:
             args = self.argparser.parse_args(line.split())
         except SystemExit as e:
